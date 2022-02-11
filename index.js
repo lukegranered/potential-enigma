@@ -72,7 +72,7 @@ const promptUser = () => {
             type: 'checkbox',
             name: 'license',
             message: 'Choose a license.',
-            choices: ''
+            choices: ['Apache', 'GPL', 'MIT', 'BSD', 'None', 'Other'],
             validate: licenseInput => {
                 if (licenseInput) {
                     return true;
@@ -83,96 +83,68 @@ const promptUser = () => {
             }
         },
         {
-            type:''
-            name:''
-            message:''
-            validate: nameInput => {
-                if (nameInput) {
+            type: 'input',
+            name: 'about',
+            message: 'Provide a short description explaining why you built this project and the problem it solves.',
+            validate: aboutInput => {
+                if (aboutInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please a description of your project!');
                     return false;
                 }
             }
         },
         {
-            type:''
-            name:''
-            message:''
-            validate: nameInput => {
-                if (nameInput) {
+            type: 'input',
+            name: 'installation',
+            message: 'What are the steps required to install your project?',
+            validate: installInput => {
+                if (installInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please enter installation info!');
                     return false;
                 }
             }
         },
         {
-            type:''
-            name:''
-            message:''
-            validate: nameInput => {
-                if (nameInput) {
+            type: 'input',
+            name: 'usage',
+            message: 'Provide instructions and examples for use.',
+            validate: usageInput => {
+                if (usageInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please provide instructions for use!');
                     return false;
                 }
             }
         },
         {
-            type:''
-            name:''
-            message:''
-            validate: nameInput => {
-                if (nameInput) {
+            type: 'input',
+            name: 'collab',
+            message: 'Where there any collaborators on this project?',
+            validate: collabInput => {
+                if (collabInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
                     return false;
                 }
             }
         },
         {
-            type:''
-            name:''
-            message:''
-            validate: nameInput => {
-                if (nameInput) {
+            type: 'input',
+            name: 'test',
+            message: 'Would you like to include any test instructions in this README?',
+            validate: testInput => {
+                if (testInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
                     return false;
                 }
             }
         },
-        {
-            type:''
-            name:''
-            message:''
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter your name!');
-                    return false;
-                }
-            }
-        },
-        {
-            type:''
-            name:''
-            message:''
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter your name!');
-                    return false;
-                }
-            }
-        }
     ]);
 }
 
