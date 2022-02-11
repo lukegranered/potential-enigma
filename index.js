@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
-const fs = require('fs');
 const inquirer = require('inquirer');
+const fs = require('fs');
+const generateMarkdown = require('./Develop/utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 // Questions to ask:
 //  - What is your name?
@@ -14,7 +15,9 @@ const inquirer = require('inquirer');
 //  - Did anyone collaborate on this project?
 //  - Would you like to include any test instructions in this README?
 
-const promptUser = () => {
+const promptUser = readmeData => {
+    readmeData = [];
+    
     return inquirer.prompt([
         {
             type: 'input',
@@ -124,7 +127,7 @@ const promptUser = () => {
         {
             type: 'input',
             name: 'collab',
-            message: 'Where there any collaborators on this project?',
+            message: 'Please enter any a list of any collaborators on this project. If there were no collaborators type NONE.',
             validate: collabInput => {
                 if (collabInput) {
                     return true;
@@ -136,7 +139,7 @@ const promptUser = () => {
         {
             type: 'input',
             name: 'test',
-            message: 'Would you like to include any test instructions in this README?',
+            message: 'Please enter any test instructions you would like to include. If none, type NONE.',
             validate: testInput => {
                 if (testInput) {
                     return true;
@@ -145,14 +148,34 @@ const promptUser = () => {
                 }
             }
         },
-    ]);
+    ])
+    .then(readmeData => {
+        console.log(readmeData);
+        return readmeData;
+    })
 }
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
+const writeToFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/index.html', fileContent, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'README created!',
+            });
+        });
+    });
+}
 
 // Function call to initialize app
-init();
+promptUser()
+    .then(readmeData => {
+        return generateMarkdown(readmeData);
+    })
+    .then(pageMarkdown => {
+        return writeToFile(pageMarkdown);
+    })
