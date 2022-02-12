@@ -22,7 +22,7 @@ const promptUser = readmeData => {
         {
             type: 'input',
             name: 'name',
-            message: 'What is your name?',
+            message: 'What is the name of your project?',
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -35,12 +35,12 @@ const promptUser = readmeData => {
         {
             type: 'input',
             name: 'project',
-            message: 'What is the name of your project?',
+            message: 'Please enter a link to your launched application',
             validate: projectInput => {
                 if (projectInput) {
                     return true;
                 } else {
-                    console.log('Please enter your project name!');
+                    console.log('Please enter a link to your launched application!');
                     return false;
                 }
             }
@@ -53,7 +53,7 @@ const promptUser = readmeData => {
                 if (githubInput) {
                     return true;
                 } else {
-                    console.log('Please enter your GitHub username!');
+                    console.log('Please enter your projects GitHub repository!');
                     return false;
                 }
             }
@@ -158,7 +158,7 @@ const promptUser = readmeData => {
 // TODO: Create a function to write README file
 const writeToFile = fileContent => {
     return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/index.html', fileContent, err => {
+        fs.writeFile('./dist/README.md', fileContent, err => {
             if (err) {
                 reject(err);
                 return;
