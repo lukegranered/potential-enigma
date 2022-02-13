@@ -17,7 +17,7 @@ function generateMarkdown(data) {
 
   ## ${data.license}
 
-  ## [Launched Application](https://pages.github.com/${data.project})
+  ## [Launched Application](${data.project})
 
   # Table of Contents
 
@@ -50,9 +50,9 @@ function generateMarkdown(data) {
 
   ##  <a id="Questions">Questions</a>
 
-  ### For any additional questions, [email](${data.email}) me.
+  ### For any additional questions, [email](mailto:${data.email}) me.
 
-  ### [GitHub Profile](www.github.com/${data.github})
+  ### [GitHub Profile](https://www.github.com/${data.github})
  
 
 `;
