@@ -127,7 +127,7 @@ const promptUser = readmeData => {
         {
             type: 'input',
             name: 'collab',
-            message: 'Please enter any a list of any collaborators on this project. If there were no collaborators type NONE.',
+            message: 'Please list any collaborators on this project. If there were no collaborators type NONE.',
             validate: collabInput => {
                 if (collabInput) {
                     return true;
